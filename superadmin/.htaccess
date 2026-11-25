@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "\.php$">
+    # Allow all PHP files (access control is in PHP)
+</FilesMatch>
