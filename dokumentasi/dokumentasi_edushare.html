@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduShare — Highlight Fitur Unggulan & Galeri Aplikasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #5142d8;
+    --purple-dark: #3730a3;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --line: #e2e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  header.doc-header {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: white;
+    padding: 48px 40px;
+    border-radius: 20px;
+    margin-bottom: 36px;
+    box-shadow: 0 10px 30px rgba(30, 27, 75, 0.2);
+  }
+  .doc-badge {
+    display: inline-block;
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  header.doc-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  header.doc-header p {
+    font-size: 15px;
+    color: #cbd5e1;
+    max-width: 680px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.3px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 12px;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--purple);
+    margin: 24px 0 12px;
+  }
+  p { margin-bottom: 14px; font-size: 14.5px; color: #334155; }
+  ul {
+    margin-left: 20px;
+    margin-bottom: 16px;
+  }
+  li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #334155;
+  }
+  li strong { color: #0f172a; }
+  .table-box {
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  th {
+    background: #f1f5f9;
+    color: #475569;
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--line);
+  }
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    color: #1e293b;
+  }
+  tr:hover td { background: #f8fafc; }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-sa { background: #fef3c7; color: #b45309; }
+  .badge-adm { background: #ede9fe; color: #5142d8; }
+  .badge-usr { background: #e0f2fe; color: #0369a1; }
+  .badge-gst { background: #f1f5f9; color: #475569; }
+  
+  /* Gallery grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+    gap: 24px;
+    margin-top: 16px;
+  }
+  .shot-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .shot-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+  }
+  .shot-img-box {
+    width: 100%;
+    background: #e2e8f0;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .shot-img-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+  }
+  .shot-meta {
+    padding: 16px 20px;
+  }
+  .shot-meta h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+  .shot-meta p {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 0;
+  }
+  footer.doc-footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="doc-header">
+    <div class="doc-badge">Laporan Resmi Sistem EduShare</div>
+    <h1>EduShare Multi-Role System</h1>
+    <p>Dokumentasi lengkap implementasi sistem Role-Based Access Control (RBAC), arsitektur modular, visual dashboard independen, dan galeri tampilan antarmuka aplikasi.</p>
+  </header>
+
+  <section class="card">
+    <h2>1. Highlight Fitur & Modul Unggulan</h2>
+    
+    <h3>A. Pengunjung / Tamu (Guest Experience)</h3>
+    <ul>
+      <li><strong>Landing Page Terbuka:</strong> Menampilkan katalog materi terverifikasi dinamis, pencarian real-time, dan navigasi kategori interaktif.</li>
+      <li><strong>Pratinjau Materi Terbatas:</strong> Pengunjung dapat melihat deskripsi, format, dan ringkasan materi, namun berkas fisik terlindungi oleh kebijakan wajib login.</li>
+      <li><strong>Halaman Autentikasi:</strong> Login dan registrasi dengan validasi input server-side, hashing <code>PASSWORD_DEFAULT</code>, dan proteksi CSRF.</li>
+    </ul>
+
+    <h3>B. Pengguna Terdaftar (User Dashboard)</h3>
+    <ul>
+      <li><strong>Dashboard Pembelajaran:</strong> Metrik KPI real-time (Total Materi, Disetujui, Menunggu Moderasi, Perlu Revisi) dan riwayat unggahan terakhir.</li>
+      <li><strong>Koleksi Materi Saya:</strong> Pengelolaan mandiri berkas yang diunggah dengan tab filter status dan catatan alasan penolakan yang transparan.</li>
+      <li><strong>Formulir Pengunggahan Materi:</strong> Dukungan multi-format (PDF, DOC/DOCX, PPT/PPTX, XLS/XLSX, ZIP, MP4, TXT) hingga 25 MB dengan verifikasi MIME type ketat.</li>
+      <li><strong>Pusat Profil & Keamanan:</strong> Pembaruan profil instan dan ganti kata sandi terlindungi verifikasi sandi lama.</li>
+    </ul>
+
+    <h3>C. Administrator (Admin Dashboard)</h3>
+    <ul>
+      <li><strong>Dashboard Operasional:</strong> Analitik sebaran status seluruh materi dan grafik tren registrasi pengguna 7 hari terakhir.</li>
+      <li><strong>Antrean Verifikasi Materi:</strong> Moderasi satu klik untuk menyetujui atau menolak materi dengan modal input alasan penolakan wajib.</li>
+      <li><strong>Manajemen Katalog & Kategori:</strong> Penambahan dan aktivasi kategori pembelajaran yang langsung sinkron ke formulir upload pengguna.</li>
+      <li><strong>Manajemen Pengguna Terbatas:</strong> Pemantauan pengguna biasa tanpa akses memodifikasi sesama administrator atau super admin.</li>
+    </ul>
+
+    <h3>D. Super Administrator (Super Admin Master Control)</h3>
+    <ul>
+      <li><strong>Master Control Center:</strong> Pemantauan menyeluruh akun sistem, kesehatan platform, dan antrean eskalasi moderasi.</li>
+      <li><strong>Manajemen Administrator:</strong> Pembuatan akun admin baru secara eksklusif (tertutup dari registrasi publik), aktivasi, dan penonaktifan.</li>
+      <li><strong>Matriks Izin Dinamis (RBAC):</strong> Konfigurasi hak akses berbasis tabel <code>role_permissions</code> secara transparan.</li>
+      <li><strong>Audit Log & Security Center:</strong> Jejak audit otomatis setiap aktivitas sensitif (IP address, waktu, user agent, actor ID, payload JSON), dan fitur reset waktu sesi global.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>2. Kredensial Pengujian Sistem</h2>
+    <p>Semua akun berikut telah aktif pada database MySQL dan dapat digunakan untuk verifikasi login:</p>
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Role / Tingkatan</th>
+            <th>Alamat Email</th>
+            <th>Kata Sandi</th>
+            <th>URL Akses</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-sa">Super Admin</span></td>
+            <td><strong>superadmin@edushare.com</strong></td>
+            <td><code>admin123</code></td>
+            <td><a href="http://localhost/edushare/superadmin/dashboard.php" target="_blank">superadmin/dashboard.php</a></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-adm">Admin</span></td>
+            <td><strong>admin@edushare.com</strong></td>
+            <td><code>admin123</code></td>
+            <td><a href="http://localhost/edushare/admin/dashboard.php" target="_blank">admin/dashboard.php</a></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-usr">Pengguna</span></td>
+            <td><strong>user@edushare.com</strong></td>
+            <td><code>admin123</code></td>
+            <td><a href="http://localhost/edushare/user/dashboard.php" target="_blank">user/dashboard.php</a></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-gst">Pengunjung</span></td>
+            <td><em>(Tanpa Login)</em></td>
+            <td><em>(Tanpa Login)</em></td>
+            <td><a href="http://localhost/edushare/index.php" target="_blank">index.php</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Galeri Tangkapan Layar Tampilan Aplikasi</h2>
+    <p>Tangkapan layar resolusi tinggi yang merepresentasikan setiap modul dan peran:</p>
+
+    <div class="gallery-grid">
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/01_landing_page.png" target="_blank"><img src="screenshots/01_landing_page.png" alt="Beranda Publik"></a></div>
+        <div class="shot-meta">
+          <h4>01. Beranda Publik (Landing Page)</h4>
+          <p>Tampilan awal pengunjung dengan pencarian, katalog kategori, dan materi terkurasi.</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/02_login_page.png" target="_blank"><img src="screenshots/02_login_page.png" alt="Halaman Login"></a></div>
+        <div class="shot-meta">
+          <h4>02. Masuk ke EduShare</h4>
+          <p>Autentikasi aman berbasis session, token CSRF, dan pengalihan otomatis berdasarkan peran.</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/03_user_dashboard.png" target="_blank"><img src="screenshots/03_user_dashboard.png" alt="Dashboard Pengguna"></a></div>
+        <div class="shot-meta">
+          <h4>03. Dashboard Pengguna</h4>
+          <p>Kartu statistik pribadi, riwayat unggahan terakhir, dan pintasan aksi cepat.</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/04_user_profil.png" target="_blank"><img src="screenshots/04_user_profil.png" alt="Profil Pengguna"></a></div>
+        <div class="shot-meta">
+          <h4>04. Profil & Keamanan Pengguna</h4>
+          <p>Pembaruan data pribadi, kartu identitas pengguna, dan formulir ubah kata sandi.</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/05_user_upload.png" target="_blank"><img src="screenshots/05_user_upload.png" alt="Upload Materi"></a></div>
+        <div class="shot-meta">
+          <h4>05. Formulir Unggah Materi</h4>
+          <p>Formulir upload dengan validasi format dokumen, batasan ukuran 25 MB, dan pemilihan kategori.</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/06_admin_dashboard.png" target="_blank"><img src="screenshots/06_admin_dashboard.png" alt="Dashboard Admin"></a></div>
+        <div class="shot-meta">
+          <h4>06. Dashboard Administrator</h4>
+          <p>Grafik analitik sebaran materi, tren pertumbuhan registrasi, dan tabel aktivitas terbaru.</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/07_admin_verifikasi.png" target="_blank"><img src="screenshots/07_admin_verifikasi.png" alt="Verifikasi Materi"></a></div>
+        <div class="shot-meta">
+          <h4>07. Moderasi & Verifikasi Materi</h4>
+          <p>Filter tab status, tombol persetujuan cepat, dan modal input alasan penolakan materi.</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/08_superadmin_dashboard.png" target="_blank"><img src="screenshots/08_superadmin_dashboard.png" alt="Dashboard Super Admin"></a></div>
+        <div class="shot-meta">
+          <h4>08. Master Dashboard Super Admin</h4>
+          <p>Ringkasan otoritas tertinggi, indikator kesehatan sistem, dan statistik platform global.</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/09_superadmin_roles.png" target="_blank"><img src="screenshots/09_superadmin_roles.png" alt="Matriks Hak Akses"></a></div>
+        <div class="shot-meta">
+          <h4>09. Matriks Hak Akses (RBAC)</h4>
+          <p>Tabel pemetaan izin dinamis per peran (Super Admin, Admin, User, Guest).</p>
+        </div>
+      </div>
+
+      <div class="shot-card">
+        <div class="shot-img-box"><a href="screenshots/10_superadmin_audit.png" target="_blank"><img src="screenshots/10_superadmin_audit.png" alt="Audit Log"></a></div>
+        <div class="shot-meta">
+          <h4>10. Sistem Audit Log</h4>
+          <p>Pencatatan aktivitas sensitif lengkap dengan timestamp, actor, IP address, dan metadata JSON.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <p>&copy; 2026 EduShare Platform. Dokumen dihasilkan secara otomatis dari sistem RBAC EduShare.</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+================================================================================
+NASKAH LENGKAP VIDEO PRESENTASI PROYEK EDUSHARE
+Platform Repositori & Kolaborasi Materi Edukasi Berbasis RBAC (Role-Based Access Control)
+Estimasi Durasi Total: 8 - 10 Menit
+================================================================================
+
+--------------------------------------------------------------------------------
+DAFTAR PERSIAPAN SEBELUM RECORDING (CHECKLIST)
+--------------------------------------------------------------------------------
+1. Web Server & Database:
+   - Apache & MySQL di XAMPP Control Panel sudah berstatus RUNNING (Warna Hijau).
+   - URL Utama: http://localhost/edushare/
+
+2. Akun Login Siap Pakai (Semua password akun: admin123):
+   - Guest / Tamu    : Langsung akses tanpa login di http://localhost/edushare/
+   - Siswa / User    : user@edushare.com       | password: admin123
+   - Admin           : admin@edushare.com      | password: admin123
+   - Super Admin     : superadmin@edushare.com | password: admin123
+
+3. Setup Tab Browser:
+   - Buka browser (disarankan siapkan 1 tab mode Incognito untuk Guest, dan 3 tab lain untuk masing-masing role agar transisi cepat).
+4. File Dokumen Percobaan:
+   - Siapkan 1 file PDF dummy di Desktop (misal: Modul_Basis_Data.pdf) untuk didemokan saat alur upload materi.
+
+
+--------------------------------------------------------------------------------
+RUNDOWN & ALUR DEMO
+--------------------------------------------------------------------------------
+- Scene 1 (00:00 - 01:00) : Pembuka & Latar Belakang EduShare
+- Scene 2 (01:00 - 02:15) : Demo Peran 1 - Pengunjung / Guest (Katalog & Guarding Unduh)
+- Scene 3 (02:15 - 04:15) : Demo Peran 2 - Siswa / User (Dashboard, Upload & Profil)
+- Scene 4 (04:15 - 06:15) : Demo Peran 3 - Administrator (Verifikasi & Kelola Kategori)
+- Scene 5 (06:15 - 08:00) : Demo Peran 4 - Super Admin (User Management, Matriks RBAC & Audit Log)
+- Scene 6 (08:00 - 09:00) : Keunggulan Teknis Arsitektur & Keamanan Sistem
+- Scene 7 (09:00 - 09:30) : Kesimpulan & Penutup
+
+
+================================================================================
+NASKAH KATA-DEMI-KATA (SCENE BY SCENE)
+================================================================================
+
+--------------------------------------------------------------------------------
+SCENE 1: PEMBUKA & LATAR BELAKANG (00:00 - 01:00)
+--------------------------------------------------------------------------------
+[VISUAL / AKSI LAYAR]:
+Tampilkan Landing Page EduShare (http://localhost/edushare/).
+Kursor mouse diarahkan ke hero banner utama.
+
+[AUDIO / NARASI ANDA]:
+"Halo semuanya, perkenalkan nama saya [Nama Anda]. Pada kesempatan kali ini, saya akan mendemonstrasikan hasil pengembangan proyek aplikasi web yang saya bangun, yaitu EduShare.
+
+Latar belakang dikembangkannya EduShare berawal dari permasalahan distribusi materi edukasi yang kerap tersebar tidak teratur di berbagai grup percakapan maupun penyimpanan awan tanpa adanya standardisasi, kurasi kelayakan isi, maupun pembagian hak akses yang jelas.
+
+EduShare hadir sebagai platform repositori dan kurasi materi terpadu. Sistem ini mengusung arsitektur Multi-Tier Role-Based Access Control (RBAC) dengan 4 tingkatan entitas: Pengunjung Publik (Guest), Pengguna Terdaftar (Siswa), Administrator Konten, hingga Super Administrator sebagai pemegang kendali master sistem. Mari kita mulai demonstrasi alurnya secara langsung."
+
+
+--------------------------------------------------------------------------------
+SCENE 2: PENGALAMAN PENGUNJUNG / GUEST (01:00 - 02:15)
+--------------------------------------------------------------------------------
+[VISUAL / AKSI LAYAR]:
+1. Buka tab Guest / Incognito pada http://localhost/edushare/.
+2. Gulir perlahan melewati hero section, statistik materi, dan kategori pilihan.
+3. Klik menu "Jelajahi Materi" (materi.php).
+4. Coba ketik kata kunci di kotak pencarian atau klik salah satu filter kategori keilmuan.
+5. Klik salah satu materi untuk melihat halaman detail.
+6. Klik tombol "Download Materi" untuk menunjukkan bahwa sistem secara otomatis menahan dan mengarahkan tamu untuk login terlebih dahulu.
+
+[AUDIO / NARASI ANDA]:
+"Sekarang kita berada di sudut pandang pertama, yaitu Guest atau Pengunjung Publik.
+
+Di halaman utama ini, pengunjung dapat melihat antarmuka landing page modern yang bersih, informatif, dan responsif. Pengunjung dapat mengeksplorasi katalog materi terbuka melalui halaman 'Jelajahi Materi'. Di sini tersedia fitur pencarian instan dan filter berdasarkan kategori keilmuan.
+
+Namun, untuk menjaga integritas data dan keamanan berkas, sistem menerapkan aturan autentikasi: pengunjung bebas melihat detail dan ringkasan materi, tetapi jika ingin mengunduh file materi secara penuh, sistem mewajibkan pengguna untuk mendaftar atau masuk terlebih dahulu. Sekarang, mari kita beralih ke peran Pengguna Terdaftar."
+
+
+--------------------------------------------------------------------------------
+SCENE 3: ALUR PENGGUNA / SISWA (02:15 - 04:15)
+--------------------------------------------------------------------------------
+[VISUAL / AKSI LAYAR]:
+1. Masuk ke halaman login (http://localhost/edushare/login.php).
+2. Input email: user@edushare.com dan password: admin123.
+3. Klik "Masuk" dan tunjukkan Dashboard Siswa (user/dashboard.php).
+4. Tunjukkan kartu statistik ringkasan (Total Materi Saya, Disetujui, Menunggu Review, Ditolak).
+5. Klik menu "Upload Materi" (user/upload.php).
+6. Isi judul, pilih kategori, ketik deskripsi, dan pilih file PDF dummy.
+7. Klik tombol "Simpan & Ajukan". Tunjukkan notifikasi berhasil dan materi langsung masuk ke tabel riwayat dengan badge status kuning "Menunggu Review".
+8. Buka halaman "Profil Saya" (user/profil.php), tunjukkan kartu data diri, ringkasan keaktifan, dan form ganti password yang rapi.
+
+[AUDIO / NARASI ANDA]:
+"Sekarang saya masuk sebagai Pengguna Terdaftar atau Siswa.
+
+Setelah berhasil melakukan autentikasi, pengguna langsung disambut di Dashboard Pribadi. Dashboard ini menyajikan rekap analitik personal: berapa banyak materi yang telah diunggah, berapa yang sudah disetujui, sedang ditinjau, maupun yang ditolak.
+
+Salah satu modul utama bagi pengguna adalah Upload Materi. Di formulir ini, sistem tidak hanya menerima input judul dan deskripsi, tetapi juga melakukan validasi ketat terhadap berkas yang diunggah—seperti pemeriksaan ekstensi, MIME type dokumen, dan batasan ukuran berkas untuk mencegah injeksi file berbahaya.
+
+Setelah berkas dikirimkan, materi tidak langsung tayang ke publik, melainkan berstatus 'Menunggu Review'. Ini adalah bagian dari alur kurasi mutu konten yang dimiliki EduShare. Selain itu, pengguna juga memiliki halaman Profil Saya yang memungkinkan pembaruan data identitas dan pergantian password secara aman dengan enkripsi hash bcrypt."
+
+
+--------------------------------------------------------------------------------
+SCENE 4: ALUR ADMINISTRATOR KONTEN (04:15 - 06:15)
+--------------------------------------------------------------------------------
+[VISUAL / AKSI LAYAR]:
+1. Logout dari akun user, lalu login dengan akun Admin: admin@edushare.com / admin123.
+2. Tunjukkan ringkasan operasional di Dashboard Admin (admin/dashboard.php).
+3. Buka menu "Verifikasi Materi" (admin/verifikasi.php).
+4. Sorot materi yang baru saja diajukan oleh user tadi.
+5. Tunjukkan tombol "Tolak" (muncul modal form alasan penolakan untuk feedback siswa) dan tombol "Setujui".
+6. Klik "Setujui". Tunjukkan status materi berubah menjadi badge hijau "Disetujui" dan kini live di katalog publik.
+7. Buka menu "Kelola Kategori" (admin/kategori.php), tunjukkan tabel data kategori dan form tambah kategori baru.
+
+[AUDIO / NARASI ANDA]:
+"Sekarang, kita beralih ke tingkatan peran ketiga, yaitu Administrator Konten.
+
+Peran Admin bertugas sebagai kurator mutu materi edukasi sebelum dapat diakses oleh publik luas. Di dashboard admin, disajikan statistik operasional konten harian.
+
+Masuk ke modul Verifikasi Materi. Di sini terlihat antrean berkas yang diajukan oleh para pengguna. Admin dapat memeriksa pratinjau dokumen, membaca deskripsi, dan memutuskan apakah materi tersebut layak terbit.
+
+Jika materi tidak sesuai standar, Admin dapat memilih opsi 'Tolak' lengkap dengan catatan alasan agar pengunggah dapat melakukan revisi. Apabila materi valid dan bermutu baik, Admin cukup menekan tombol 'Setujui'. Seketika itu juga status materi berubah menjadi Disetujui dan langsung terbit di katalog publik.
+
+Admin juga memiliki hak untuk mengelola taksonomi materi pada modul Kelola Kategori, memastikan repositori tetap tertata rapi sesuai bidang keilmuan."
+
+
+--------------------------------------------------------------------------------
+SCENE 5: SUPER ADMINISTRATOR & TATA KELOLA RBAC (06:15 - 08:00)
+--------------------------------------------------------------------------------
+[VISUAL / AKSI LAYAR]:
+1. Logout dari Admin, lalu login sebagai Super Admin: superadmin@edushare.com / admin123.
+2. Tampilkan Dashboard Super Admin (superadmin/dashboard.php) dengan metrik enterprise.
+3. Buka menu "Manajemen Pengguna" (superadmin/users.php). Tunjukkan bahwa Super Admin bisa membuat akun Admin baru dan mengaktifkan/menonaktifkan akun.
+4. Buka menu "Hak Akses & Role" (superadmin/roles.php). Tunjukkan matriks izin (permissions) dinamis dari database.
+5. Buka menu "Audit Log" (superadmin/audit_log.php). Tunjukkan catatan aktivitas forensik (IP address, waktu, aksi login/verifikasi).
+
+[AUDIO / NARASI ANDA]:
+"Kini kita berada pada puncak hierarki sistem, yaitu Super Administrator.
+
+Super Admin memiliki hak kendali penuh atas tata kelola sistem, otorisasi, dan pengawasan keamanan. Di halaman Dashboard Super Admin, disajikan ringkasan eksekutif seluruh aktivitas platform.
+
+Pada modul Manajemen Pengguna, Super Admin memiliki wewenang eksklusif untuk membuat akun staf Administrator baru, mengubah status akun pengguna, maupun melakukan penangguhan akses apabila ditemukan pelanggaran.
+
+Keunggulan utama arsitektur EduShare terletak pada modul Hak Akses & Role. Di sini, sistem menggunakan database-driven permission mapping. Setiap peran dipetakan ke izin spesifik, sehingga batasan kewenangan setiap tingkatan akun bersifat dinamis dan terlindungi secara ketat di sisi backend.
+
+Terakhir, untuk memenuhi standar keamanan dan akuntabilitas, EduShare dilengkapi modul Audit Log. Setiap interaksi penting—mulai dari autentikasi, persetujuan materi, hingga perubahan data—tercatat rapi dengan rincian waktu, identitas pengguna, dan alamat IP untuk kebutuhan audit forensik digital."
+
+
+--------------------------------------------------------------------------------
+SCENE 6: KEUNGGULAN TEKNIS & KEAMANAN SISTEM (08:00 - 09:00)
+--------------------------------------------------------------------------------
+[VISUAL / AKSI LAYAR]:
+Buka halaman dokumentasi teknis EduShare di browser (http://localhost/edushare/dokumentasi/dokumentasi_edushare.html) atau perlihatkan arsitektur kode.
+
+[AUDIO / NARASI ANDA]:
+"Dari sisi implementasi teknis dan rekayasa perangkat lunak, platform EduShare dibangun dengan mengedepankan standar keamanan industri:
+
+1. Pertama, Pencegahan SQL Injection: Seluruh transaksi basis data menggunakan PDO dengan Prepared Statements dan parameterized queries.
+2. Kedua, Keamanan Kredensial: Menggunakan algoritma hashing modern Bcrypt melalui fungsi native PHP password_hash().
+3. Ketiga, Session Hardening: Dilengkapi dengan mekanisme regenerasi ID sesi saat login untuk mencegah serangan Session Fixation dan Session Hijacking.
+4. Keempat, File Security: Validasi berlapis pada proses upload berkas, mencakup pembatasan ekstensi whitelist, validasi MIME type, dan enkripsi penamaan berkas fisik di server storage.
+5. Kelima, Antarmuka Responsif & Mandiri: Tampilan UI didesain modern menggunakan CSS terpadu dan ikon vektor inline SVG murni, memastikan performa loading yang sangat cepat tanpa ketergantungan library eksternal yang rentan."
+
+
+--------------------------------------------------------------------------------
+SCENE 7: KESIMPULAN & PENUTUP (09:00 - 09:30)
+--------------------------------------------------------------------------------
+[VISUAL / AKSI LAYAR]:
+Kembali ke Landing Page EduShare (http://localhost/edushare/) atau beralih ke rekaman kamera wajah presenter.
+
+[AUDIO / NARASI ANDA]:
+"Sebagai kesimpulan, EduShare bukan sekadar repositori berkas biasa, melainkan solusi manajemen pengetahuan yang aman, terkurasi, dan memiliki tata kelola hak akses bertingkat yang andal untuk kebutuhan institusi pendidikan maupun komunitas pembelajar.
+
+Demikian presentasi dan demonstrasi sistem EduShare ini saya sampaikan. Terima kasih banyak atas perhatian Bapak/Ibu dosen dan rekan-rekan sekalian. Kritik dan saran yang membangun sangat saya nantikan untuk pengembangan platform ini ke depannya.
+
+Wassalamu'alaikum Warahmatullahi Wabarakatuh / Salam Sejahtera bagi kita semua."
+
+
+================================================================================
+TIPS & TRIK SAAT RECORDING VIDEO
+================================================================================
+1. Pacing & Jeda:
+   Berikan jeda 1 sampai 2 detik setelah mengklik tombol sebelum mulai berbicara agar rekaman layar tidak terlihat terburu-buru.
+2. Gerakan Kursor Mouse:
+   Arahkan kursor secara tenang dan fokus ke elemen yang sedang dijelaskan.
+3. Resolusi Rekaman:
+   Disarankan rekam dengan resolusi 1080p (1920x1080), rasio 16:9, dengan zoom browser di 100%.
+================================================================================
